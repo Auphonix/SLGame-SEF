@@ -40,7 +40,7 @@ public class PlayerTest {
         System.out.println(tempDiceRoll);//
         tempDiceRoll = 5; //Simulates virtual roll and stores in tempVariable
         System.out.println(tempDiceRoll);
-        playerTest1.computePos(tempDiceRoll); //Comment testing attemp
+        playerTest1.computePos(tempDiceRoll); //Comment testing attempt
         playerTest2.computePos(tempDiceRoll);
 
         assertEquals(tempDiceRoll, playerTest1.getPos()); //ensures that player is still on dice roll square even though
