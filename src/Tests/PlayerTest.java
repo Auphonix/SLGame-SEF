@@ -13,7 +13,7 @@ import java.awt.*;
 /**
  * Created by Danyon on 18/04/2016.
  */
-public class PlayerTest {
+public class PlayerTest{
 
     Board brd = new Board();
     Dice dice = new Dice(brd.getGraphics());
@@ -23,7 +23,7 @@ public class PlayerTest {
     @Before
     public void setUp() throws Exception {
         playerTest[0] = new Player(brd,dice,1,1,"playerTest1");
-        playerTest[1] = new Player(brd,dice,0,2,"playerTest2");
+        playerTest[1] = new Player(brd,dice,0,1,"playerTest2");
         tempDiceRoll = 0;
     }
 
@@ -66,8 +66,10 @@ public class PlayerTest {
 
     @Test
     public void playerRollsAgainOnSix() throws Exception {
+        tempDiceRoll = 6;
+        System.out.println(dice.roll());
 
-
+        playerTest[0].move();
 
     }
 
