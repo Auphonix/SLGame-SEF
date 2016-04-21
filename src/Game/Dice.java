@@ -86,5 +86,5 @@ public class Dice
         }
     }
 
-    static int getThrow() { return (int) (Math.random()*6) + 1;    }
+    public static int getThrow() { return (int) (Math.random()*6) + 1;    }
 }
