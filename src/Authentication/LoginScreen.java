@@ -21,7 +21,7 @@ class LoginScreen extends JFrame implements ActionListener
 
       jlabUser = new JLabel("Username:");
       jlabPass = new JLabel("Password:");
-
+`
       this.setLayout(null);
       this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 

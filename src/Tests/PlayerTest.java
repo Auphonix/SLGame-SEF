@@ -13,11 +13,11 @@ import java.awt.*;
 /**
  * Created by Danyon on 18/04/2016.
  */
-public class PlayerTest{
+public class PlayerTest extends Game.SLGame{
 
-    Board brd = new Board();
-    Dice dice = new Dice(brd.getGraphics());
-    int tempDiceRoll = 0;
+    private Board brd = new Board();
+    private Dice dice = new Dice(brd.getGraphics());
+    private int tempDiceRoll = 0;
     private Player playerTest[] = new Player[2];
 
     @Before
