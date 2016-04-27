@@ -51,7 +51,7 @@ class LoginScreen extends JFrame implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent ae) {
-        if(btnReset.isEnabled() == true){
+        if(btnReset.isEnabled() == true){ //Checks if btnReset is pressed
             jtfUser.setText("");
             jpfPass.setText("");
         }
