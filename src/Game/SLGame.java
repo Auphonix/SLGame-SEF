@@ -2,6 +2,7 @@
 /* You are free to refactor and modify the program 							*/
 package Game;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 // The main system level class 
@@ -11,6 +12,8 @@ public class SLGame
     private int pCount;
     private Board bd;
     private int turn = 0;
+    public int numberOfSnakes[] = new int[4];
+    public int numberOfPlayerPieces[] = new int[4];
 
     static Scanner scan = new Scanner(System.in);
 
@@ -27,6 +30,7 @@ public class SLGame
         System.out.println("Exit            : 3");
         System.out.println("Enter 1/2/3     : ");
         System.out.println("**************************");
+        System.out.print("Your Input: ");
         return scan.nextLine().charAt(0);
     }
 
@@ -40,9 +44,12 @@ public class SLGame
     public SLGame()
     {
         bd = new Board();
-        char ch;
+        char ch = ' ';
         do {
-            ch = displayMenu();
+            try{ch = displayMenu();}
+            catch(StringIndexOutOfBoundsException e){
+                System.out.println("> Please enter text.");
+            }
             switch (ch)
             {
                 case '1' : play(); break;
@@ -71,6 +78,31 @@ public class SLGame
             System.out.print("Enter name of player " + (i + 1) + " : ");
             String name = scan.nextLine();
             players[i] = new Player(bd,dice,i,1,name);
+            bd.repaint();
+            while(true) {
+                try {
+                    System.out.print("Player " + (i + 1) + ", Enter number of player pieces : ");
+                    numberOfPlayerPieces[i] = scan.nextInt();
+                    break;
+                }
+                catch (InputMismatchException e) {
+                    System.out.println("> Error. Input is not an integer");
+                    scan.nextLine();
+                    continue;
+                }
+            }
+            while(true) {
+                try {
+                    System.out.print("Player " + (i + 1) + ", Enter number of snakes on board : ");
+                    numberOfSnakes[i] = scan.nextInt();
+                    break;
+                }
+                catch (InputMismatchException e) {
+                    System.out.println("> Error. Input is not an integer");
+                    scan.nextLine();
+                }
+            }
+            scan.nextLine();
         }
         bd.add(players,pCount);
 

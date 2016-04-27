@@ -6,7 +6,7 @@ import java.util.*;
 public class Board extends JPanel implements Runnable
 {
     static Scanner scan = new Scanner(System.in);
-    private static JFrame frame = new JFrame("Assignment Demo");
+    private static JFrame frame = new JFrame("Snakes And Ladders");
     private int XMARGIN = 20;
     private int YMARGIN = 20;
     private Player players[];
@@ -131,7 +131,8 @@ public class Board extends JPanel implements Runnable
 
         frame.getContentPane().add(this,BorderLayout.CENTER);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(640,520);
+        frame.setResizable(false);
+        frame.setSize(640,600);
         frame.setVisible(true);
         setup();
         new Thread(this).start();
@@ -174,6 +175,10 @@ public class Board extends JPanel implements Runnable
                     g.setColor(Color.ORANGE);
                 g.fillRect(XMARGIN + 40*i,YMARGIN+40*j, 40,40);
             }
+
+        g.setColor(Color.GRAY);
+        g.fillRect(20,440,400,160);
+
         g.setColor(Color.BLACK);
         for ( int i=0; i<100; i++)
             if ( (i/10) % 2 == 0 )

@@ -68,19 +68,36 @@ public class Player extends Draw
     {
         if (index == 0)
         {
-            g.setColor(Color.WHITE);
+            g.setColor(Color.WHITE); // Used to set Players visible on the board
             g.fillOval(getX(pos) -10,getY(pos)-10,20,20);
             g.setColor(Color.BLACK);
             g.drawString("1", getX(pos) -5,getY(pos)+5);
+
+            g.setColor(Color.WHITE); // Used to set Players visible on the board
+            g.fillOval(25,455,40,40);
+            g.setColor(Color.BLACK);
+            g.drawString("1",40,475);
+
+            JLabel lblPlayer1 = new JLabel(this.getName());
+            lblPlayer1.setBounds(75,455,50,40);
+            bd.add(lblPlayer1);
         }
         if (index == 1)
-
-            //hello
         {
             g.setColor(Color.RED);
             g.fillOval(getX(pos) +10,getY(pos)-10,20,20);
             g.setColor(Color.BLACK);
             g.drawString("2", getX(pos) +15,getY(pos)+5);
+
+            g.setColor(Color.RED); // Used to set Players visible on the board
+            g.fillOval(260,455,40,40);
+            g.setColor(Color.BLACK);
+            g.drawString("2",275,475);
+
+            JLabel lblPlayer2 = new JLabel(this.getName());
+            lblPlayer2.setBounds(310,455,50,40);
+            bd.add(lblPlayer2);
+
         }
         if (index == 2)
         {
@@ -88,6 +105,15 @@ public class Player extends Draw
             g.fillOval(getX(pos) -10,getY(pos)+10,20,20);
             g.setColor(Color.BLACK);
             g.drawString("3", getX(pos) -5,getY(pos)+25);
+
+            g.setColor(Color.BLUE); // Used to set Players visible on the board
+            g.fillOval(25,520,40,40);
+            g.setColor(Color.BLACK);
+            g.drawString("3",40,540);
+
+            JLabel lblPlayer1 = new JLabel(this.getName());
+            lblPlayer1.setBounds(75,520,50,40);
+            bd.add(lblPlayer1);
         }
         if (index == 3)
         {
@@ -95,6 +121,15 @@ public class Player extends Draw
             g.fillOval(getX(pos) +10,getY(pos)+10,20,20);
             g.setColor(Color.BLACK);
             g.drawString("4", getX(pos) +15,getY(pos)+25);
+
+            g.setColor(Color.CYAN); // Used to set Players visible on the board
+            g.fillOval(260,520,40,40);
+            g.setColor(Color.BLACK);
+            g.drawString("4",275,540);
+
+            JLabel lblPlayer2 = new JLabel(this.getName());
+            lblPlayer2.setBounds(310,520,50,40);
+            bd.add(lblPlayer2);
         }
     }
 
