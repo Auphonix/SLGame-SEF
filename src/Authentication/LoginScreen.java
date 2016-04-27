@@ -1,3 +1,5 @@
+package Authentication;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -21,7 +23,7 @@ class LoginScreen extends JFrame implements ActionListener
 
       jlabUser = new JLabel("Username:");
       jlabPass = new JLabel("Password:");
-`
+
       this.setLayout(null);
       this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
