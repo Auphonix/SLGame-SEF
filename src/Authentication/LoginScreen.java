@@ -55,6 +55,12 @@ class LoginScreen extends JFrame implements ActionListener {
             jtfUser.setText("");
             jpfPass.setText("");
         }
+        else if(btnExit.isEnabled() == true){ //Used to quit application
+
+        }
+        else if(btnLogin.isEnabled() == true){ //Used to login
+
+        }
     }
 
     public static void main(String args[]) {
