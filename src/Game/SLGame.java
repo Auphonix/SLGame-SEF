@@ -2,11 +2,20 @@
 /* You are free to refactor and modify the program 							*/
 package Game;
 
+import sun.misc.IOUtils;
+import Game.SLGame.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.io.ByteArrayInputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import static Game.Board.inGameTerminalInput;
+import static Game.Board.textEntered;
+
 // The main system level class 
-public class SLGame
+public class SLGame extends LoginScreen
 {
     private Player players[] = new Player[4];
     private int pCount;
@@ -14,8 +23,7 @@ public class SLGame
     private int turn = 0;
     public int numberOfSnakes[] = new int[4];
     public int numberOfPlayerPieces[] = new int[4];
-
-    static Scanner scan = new Scanner(System.in);
+    Scanner scan = new Scanner(System.in);
 
     public static void main(String args[])
     {
@@ -24,13 +32,13 @@ public class SLGame
 
     public char displayMenu()
     {
-        System.out.println("******* Snakes Menu ********");
-        System.out.println("Play Game       : 1");
-        System.out.println("Customize Board : 2");
-        System.out.println("Exit            : 3");
-        System.out.println("Enter 1/2/3     : ");
-        System.out.println("**************************");
-        System.out.print("Your Input: ");
+        Board.terminalOutput("******* Snakes Menu ********");
+        Board.terminalOutput("Play Game        : 1");
+        Board.terminalOutput("Customize Board  : 2");
+        Board.terminalOutput("Exit             : 3");
+        Board.terminalOutput("Enter 1/2/3      : ");
+        Board.terminalOutput("****************************");
+        Board.terminalOutput("Enter Text");
         return scan.nextLine().charAt(0);
     }
 
@@ -44,12 +52,27 @@ public class SLGame
     public SLGame()
     {
         bd = new Board();
+        inGameTerminalInput.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                System.out.println("Something was pressed");
+                if(e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    textEntered = inGameTerminalInput.getText();
+                    bd.inputStream = new ByteArrayInputStream(textEntered.getBytes(StandardCharsets.UTF_8));
+                    System.setIn(bd.inputStream);
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {
+
+            }
+        });
         char ch = ' ';
         do {
-            try{ch = displayMenu();}
-            catch(StringIndexOutOfBoundsException e){
-                System.out.println("> Please enter text.");
-            }
+            ch = displayMenu();
+            System.out.println(ch);
             switch (ch)
             {
                 case '1' : play(); break;
@@ -57,7 +80,6 @@ public class SLGame
             }
         } while (ch != '3');
     }
-
 
     public void play()
     {

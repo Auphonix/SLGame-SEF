@@ -79,7 +79,8 @@ public class Player extends Draw
             g.drawString("1",40,475);
 
             JLabel lblPlayer1 = new JLabel(this.getName());
-            lblPlayer1.setBounds(75,455,50,40);
+            lblPlayer1.setBounds(75,455,150,40);
+            lblPlayer1.setFont(new Font("Menlo", Font.PLAIN, 13));
             bd.add(lblPlayer1);
         }
         if (index == 1)
@@ -95,7 +96,8 @@ public class Player extends Draw
             g.drawString("2",275,475);
 
             JLabel lblPlayer2 = new JLabel(this.getName());
-            lblPlayer2.setBounds(310,455,50,40);
+            lblPlayer2.setBounds(310,455,150,40);
+            lblPlayer2.setFont(new Font("Menlo", Font.PLAIN, 13));
             bd.add(lblPlayer2);
 
         }
@@ -111,9 +113,10 @@ public class Player extends Draw
             g.setColor(Color.BLACK);
             g.drawString("3",40,540);
 
-            JLabel lblPlayer1 = new JLabel(this.getName());
-            lblPlayer1.setBounds(75,520,50,40);
-            bd.add(lblPlayer1);
+            JLabel lblPlayer3 = new JLabel(this.getName());
+            lblPlayer3.setBounds(75,520,150,40);
+            lblPlayer3.setFont(new Font("Menlo", Font.PLAIN, 13));
+            bd.add(lblPlayer3);
         }
         if (index == 3)
         {
@@ -127,9 +130,10 @@ public class Player extends Draw
             g.setColor(Color.BLACK);
             g.drawString("4",275,540);
 
-            JLabel lblPlayer2 = new JLabel(this.getName());
-            lblPlayer2.setBounds(310,520,50,40);
-            bd.add(lblPlayer2);
+            JLabel lblPlayer4 = new JLabel(this.getName());
+            lblPlayer4.setBounds(310,520,150,40);
+            lblPlayer4.setFont(new Font("Menlo", Font.PLAIN, 13));
+            bd.add(lblPlayer4);
         }
     }
 

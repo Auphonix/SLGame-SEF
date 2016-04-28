@@ -17,46 +17,46 @@ public class Dice
     public void draw()
     {
         g.setColor(Color.BLACK);
-        g.fill3DRect(500,200,45,45,false);
+        g.fill3DRect(500,520,45,45,false);
         g.setColor(Color.WHITE);
         if ( n == 1)
         {
-            g.fillOval(520,220,5,5);
+            g.fillOval(520,520,5,5);
         }
         else if ( n == 2 )
         {
-            g.fillOval(510,220,5,5);
-            g.fillOval(530,220,5,5);
+            g.fillOval(510,520,5,5);
+            g.fillOval(530,520,5,5);
         }
         else if ( n == 3 )
         {
-            g.fillOval(520,210,5,5);
-            g.fillOval(510,230,5,5);
-            g.fillOval(530,230,5,5);
+            g.fillOval(520,510,5,5);
+            g.fillOval(510,530,5,5);
+            g.fillOval(530,530,5,5);
         }
         else if ( n == 4 )
         {
-            g.fillOval(510,210,5,5);
-            g.fillOval(530,210,5,5);
-            g.fillOval(510,230,5,5);
-            g.fillOval(530,230,5,5);
+            g.fillOval(510,510,5,5);
+            g.fillOval(530,510,5,5);
+            g.fillOval(510,530,5,5);
+            g.fillOval(530,530,5,5);
         }
         else if ( n == 5 )
         {
-            g.fillOval(510,210,5,5);
-            g.fillOval(530,210,5,5);
-            g.fillOval(520,220,5,5);
-            g.fillOval(510,230,5,5);
-            g.fillOval(530,230,5,5);
+            g.fillOval(510,510,5,5);
+            g.fillOval(530,510,5,5);
+            g.fillOval(520,520,5,5);
+            g.fillOval(510,530,5,5);
+            g.fillOval(530,530,5,5);
         }
         else if ( n == 6 )
         {
-            g.fillOval(510,210,5,5);
-            g.fillOval(530,210,5,5);
-            g.fillOval(510,220,5,5);
-            g.fillOval(530,220,5,5);
-            g.fillOval(510,230,5,5);
-            g.fillOval(530,230,5,5);
+            g.fillOval(510,510,5,5);
+            g.fillOval(530,510,5,5);
+            g.fillOval(510,520,5,5);
+            g.fillOval(530,520,5,5);
+            g.fillOval(510,530,5,5);
+            g.fillOval(530,530,5,5);
         }
     }
 

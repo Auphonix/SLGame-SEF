@@ -1,9 +1,19 @@
 package Game;
+
+import com.sun.tools.doclets.internal.toolkit.util.DocFinder;
+
 import java.awt.*;
+import javax.print.DocFlavor;
 import javax.swing.*;
+import javax.swing.text.BadLocationException;
+import java.awt.event.*;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.*;
 
-public class Board extends JPanel implements Runnable
+public class Board extends JPanel implements Runnable, ActionListener
 {
     static Scanner scan = new Scanner(System.in);
     private static JFrame frame = new JFrame("Snakes And Ladders");
@@ -16,6 +26,17 @@ public class Board extends JPanel implements Runnable
     private Ladder[]ls = new Ladder[10];
     int snakesCount = 0;
     int laddersCount = 0;
+
+    private JButton Login = new JButton("Login");
+    private JButton Logout = new JButton("Logout");
+    public static JTextField inGameTerminalInput;
+    public static JTextArea inGameTerminalOutput;
+    private JScrollPane terminalOutputScroll;
+
+    public final static String newline = "\n";
+    public static String textEntered = "";
+
+    public static InputStream inputStream = null;
 
 
     // the standard positions of snakes and ladders
@@ -102,7 +123,6 @@ public class Board extends JPanel implements Runnable
         return val;
     }
 
-
     //Used to add a snake
     public void add(Snake s)
     {
@@ -123,6 +143,56 @@ public class Board extends JPanel implements Runnable
         }
     }
 
+    public static void terminalInput(String terminalInput) {
+
+    }
+
+    public static void terminalOutput(String outputString){
+        final int maxLineLength = 26;
+        int numLinesToRemove = inGameTerminalOutput.getLineCount() - maxLineLength;
+
+        inGameTerminalOutput.append(outputString + newline);
+        if (numLinesToRemove > 0) {
+            try {
+                int posOfLastLineToRemove = inGameTerminalOutput.getLineEndOffset(numLinesToRemove - 1);
+                inGameTerminalOutput.replaceRange("", 0, posOfLastLineToRemove);
+            } catch (BadLocationException ex) {
+                ex.printStackTrace();
+            }
+        }
+
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        final int maxLineLength = 26;
+        int inPtr = 0;
+        char ch;
+        int numLinesToRemove = inGameTerminalOutput.getLineCount() - maxLineLength;
+        textEntered = inGameTerminalInput.getText();
+
+        if(!textEntered.equals("") && !textEntered.equals(" ")) {
+            inGameTerminalOutput.append(textEntered + newline);
+
+            if(numLinesToRemove > 0)
+            {
+                try
+                {
+                    int posOfLastLineToRemove= inGameTerminalOutput.getLineEndOffset(numLinesToRemove - 1);
+                    inGameTerminalOutput.replaceRange("",0,posOfLastLineToRemove);
+                } catch (BadLocationException ex) {
+                    ex.printStackTrace();
+                }
+            }
+
+            inGameTerminalInput.setText("");
+            inGameTerminalOutput.setCaretPosition(inGameTerminalOutput.getDocument().getLength());
+        }
+        else{
+            terminalOutput("> Please Enter Text");
+        }
+
+    }
+
     //Creates new frame called board.
     public Board()
     {
@@ -131,11 +201,46 @@ public class Board extends JPanel implements Runnable
 
         frame.getContentPane().add(this,BorderLayout.CENTER);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setResizable(false);
-        frame.setSize(640,600);
+        frame.setSize(700,600);
         frame.setVisible(true);
         setup();
         new Thread(this).start();
+
+
+        inGameTerminalInput = new JTextField(20);
+        inGameTerminalInput.addActionListener(this);
+        inGameTerminalInput.setBounds(427,60,266,20);
+        this.add(inGameTerminalInput);
+        frame.addWindowListener( new WindowAdapter() {
+            public void windowOpened( WindowEvent e ){
+                inGameTerminalInput.requestFocus();
+            }
+        });
+
+        inGameTerminalOutput = new JTextArea(5,20);
+        inGameTerminalOutput.setEditable(false);
+        inGameTerminalOutput.setFont(new Font("Menlo",Font.PLAIN,12));
+
+        terminalOutputScroll = new JScrollPane(inGameTerminalOutput);
+        terminalOutputScroll.setBounds(430,80,260,400);
+        this.add(terminalOutputScroll);
+
+        Login.setBounds(430,10,120,45);
+        this.add(Login);
+
+        Logout.setBounds(570,10,120,45);
+        this.add(Logout);
+
+       /* Login.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(Login.isEnabled()) {
+                    LoginScreen throwLogin = new LoginScreen();
+                }
+            }
+        });
+        */
+
     }
 
 
@@ -194,3 +299,7 @@ public class Board extends JPanel implements Runnable
             players[i].draw(g);
     }
 }
+
+
+
+

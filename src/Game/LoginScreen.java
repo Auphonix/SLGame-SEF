@@ -1,38 +1,35 @@
-package Authentication;
+package Game;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
 class LoginScreen extends JFrame implements ActionListener {
+    private String username;
+    private String password;
+    private int index;
+
     JButton btnLogin, btnReset, btnExit;
     JTextField jtfUser;
     JPasswordField jpfPass;
     JLabel jlabUser, jlabPass;
 
-    public LoginScreen(String name) {
-        super(name);
 
-        JFrame loginScreen = new JFrame();  //creates the frame and sets properties
-        loginScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+    public LoginScreen() {
+
+        JFrame loginScreen = new JFrame("Login Screen");  //creates the frame and sets properties
+        loginScreen.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         loginScreen.setSize(500, 300);
         loginScreen.setVisible(true);
 
-        jtfUser = new JTextField("Please Enter Username"); //Creates an instance of all elements
-        jpfPass = new JPasswordField();
-        jlabUser = new JLabel("Username:");
-        jlabPass = new JLabel("Password:");
-        btnLogin = new JButton("Login");
-        btnReset = new JButton("Reset");
-        btnExit = new JButton("Exit");
-
-        loginScreen.add(jlabUser); //Adds all instances to the JFrame
-        loginScreen.add(jlabPass);
-        loginScreen.add(jpfPass);
-        loginScreen.add(jtfUser);
-        loginScreen.add(btnLogin);
-        loginScreen.add(btnReset);
-        loginScreen.add(btnExit);
+        JTextField jtfUser = new JTextField("Please Enter Username"); //Creates an instance of all elements
+        JPasswordField jpfPass = new JPasswordField();
+        JLabel jlabUser = new JLabel("Username:");
+        JLabel jlabPass = new JLabel("Password:");
+        JButton btnLogin = new JButton("Login");
+        JButton btnReset = new JButton("Reset");
+        JButton btnExit = new JButton("Exit");
 
         btnLogin.addActionListener(this); //Adds listeners on all buttons
         btnReset.addActionListener(this);
@@ -48,6 +45,16 @@ class LoginScreen extends JFrame implements ActionListener {
         btnReset.setBounds(240, 55, 100, 30);
         btnExit.setBounds(340, 55, 100, 30);
 
+        loginScreen.add(jlabUser); //Adds all instances to the JFrame
+        loginScreen.add(jlabPass);
+        loginScreen.add(jpfPass);
+        loginScreen.add(jtfUser);
+        loginScreen.add(btnLogin);
+        loginScreen.add(btnReset);
+        loginScreen.add(btnExit);
+    }
+
+    public void userSearch(String username, String password){
     }
 
     public void actionPerformed(ActionEvent ae) {
@@ -56,17 +63,9 @@ class LoginScreen extends JFrame implements ActionListener {
             jpfPass.setText("");
         }
         else if(btnExit.isEnabled() == true){ //Used to quit application
-
         }
         else if(btnLogin.isEnabled() == true){ //Used to login
-
+            super.dispose();
         }
     }
-
-    public static void main(String args[]) {
-        LoginScreen ls = new LoginScreen("Snake&LadderLogin");
-
-    }
-
-
 }
