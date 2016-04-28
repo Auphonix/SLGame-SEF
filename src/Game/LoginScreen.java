@@ -57,14 +57,5 @@ class LoginScreen extends JFrame implements ActionListener
   {
     jlabLoginPress.setIcon(new ImageIcon("/Users/mac/Documents/Atom/Java/SEF/Files/sample.png"));
   }
-
-  public static void main(String args[])
-  {
-    LoginScreen ls = new LoginScreen("Snake&LadderLogin");
-
-  }
-
-
-
-
 }
+
