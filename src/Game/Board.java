@@ -203,6 +203,7 @@ public class Board extends JPanel implements Runnable, ActionListener
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(700,600);
         frame.setVisible(true);
+        frame.setResizable(false);
         setup();
         new Thread(this).start();
 
@@ -231,16 +232,14 @@ public class Board extends JPanel implements Runnable, ActionListener
         Logout.setBounds(570,10,120,45);
         this.add(Logout);
 
-       /* Login.addActionListener(new ActionListener() {
+        Login.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(Login.isEnabled()) {
+                if (Login.isEnabled()) {
                     LoginScreen throwLogin = new LoginScreen();
                 }
             }
         });
-        */
-
     }
 
 

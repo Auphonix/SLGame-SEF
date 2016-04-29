@@ -2,8 +2,6 @@
 /* You are free to refactor and modify the program 							*/
 package Game;
 
-import sun.misc.IOUtils;
-import Game.SLGame.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.ByteArrayInputStream;
@@ -15,11 +13,12 @@ import static Game.Board.inGameTerminalInput;
 import static Game.Board.textEntered;
 
 // The main system level class 
-public class SLGame extends LoginScreen
+public class SLGame
 {
-    private Player players[] = new Player[4];
-    private int pCount;
+    public Player players[] = new Player[4];
+    public int pCount;
     private Board bd;
+    private Account ac[] = new Account[10]; //Maximum 10 Accounts
     private int turn = 0;
     public int numberOfSnakes[] = new int[4];
     public int numberOfPlayerPieces[] = new int[4];

@@ -1,61 +1,81 @@
+package Game;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-class LoginScreen extends JFrame implements ActionListener
-{
-  JButton btnLogin, btnReset, btnExit;
-  JTextField jtfUser;
-  JPasswordField jpfPass;
-  JLabel jlabUser, jlabPass, jlabLoginPress;
+abstract class LoginScreen extends JFrame implements ActionListener {
+    JButton btnLogin, btnRegister, btnExit;
+    JTextField jtfUser;
+    JPasswordField jpfPass;
+    JLabel jlabUser, jlabPass, jlabLoginPress;
+    JFrame loginScreenFrame;
+    String username;
+    String password;
 
-    public LoginScreen(String name)
-    {
-      super(name);
-      btnLogin = new JButton("Login");
-      btnReset = new JButton("Register");
-      btnExit = new JButton("Exit");
+    public LoginScreen() {
 
-      jtfUser = new JTextField();
-      jpfPass = new JPasswordField();
+        loginScreenFrame = new JFrame("Snakes and Ladders Login");
 
-      jlabUser = new JLabel("Username:");
-      jlabPass = new JLabel("Password:");
-      jlabLoginPress = new JLabel("fw");
+        btnLogin = new JButton("Login");
+        btnRegister = new JButton("Register");
+        btnExit = new JButton("Exit");
 
-      this.setLayout(null);
-      this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        jtfUser = new JTextField();
+        jpfPass = new JPasswordField();
 
-      btnLogin.addActionListener(this);
-      btnReset.addActionListener(this);
-      btnExit.addActionListener(this);
+        jlabUser = new JLabel("Username:");
+        jlabPass = new JLabel("Password:");
+        jlabLoginPress = new JLabel();
 
-      jlabUser.setBounds(10,10,120,20);
-      jlabPass.setBounds(10,30,120,10);
+        loginScreenFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        loginScreenFrame.setLayout(null);
+        loginScreenFrame.setResizable(false);
 
-      jtfUser.setBounds(140,10,300,20);
-      jpfPass.setBounds(140,30,300,20);
+        btnLogin.addActionListener(this);
+        btnRegister.addActionListener(this);
+        btnExit.addActionListener(this);
 
-      btnLogin.setBounds(140,55,100,30);
-      btnReset.setBounds(240,55,100,30);
-      btnExit.setBounds(340,55,100,30);
+        jlabUser.setBounds(10, 10, 120, 20);
+        jlabPass.setBounds(10, 30, 120, 10);
 
-      /*jlabLoginPress.setBounds(140,60,300,30);*/
+        jtfUser.setBounds(140, 10, 300, 20);
+        jpfPass.setBounds(140, 30, 300, 20);
 
-      this.add(jlabUser);
-      this.add(jlabPass);
-      this.add(jpfPass);
-      this.add(btnLogin);
-      this.add(btnReset);
-      this.add(btnExit);
+        btnLogin.setBounds(140, 55, 100, 30);
+        btnRegister.setBounds(240, 55, 100, 30);
+        btnExit.setBounds(340, 55, 100, 30);
 
-      this.setSize(500,300);
-      this.setVisible(true);
+        jlabLoginPress.setBounds(140,140,300,20);
+
+        loginScreenFrame.add(jlabUser);
+        loginScreenFrame.add(jlabPass);
+        loginScreenFrame.add(jtfUser);
+        loginScreenFrame.add(jpfPass);
+        loginScreenFrame.add(btnLogin);
+        loginScreenFrame.add(btnRegister);
+        loginScreenFrame.add(btnExit);
+        loginScreenFrame.add(jlabLoginPress);
+
+        loginScreenFrame.setSize(500, 300);
+        loginScreenFrame.setVisible(true);
+
     }
 
-  public void actionPerformed(ActionEvent ae)
-  {
-    jlabLoginPress.setIcon(new ImageIcon("/Users/mac/Documents/Atom/Java/SEF/Files/sample.png"));
-  }
+    public void actionPerformed(ActionEvent ae) {
+        if(ae.getSource() == btnLogin){
+            username = jtfUser.getText();
+            password = jpfPass.getText();
+            Account.findUser(username, password);
+        }
+        if(ae.getSource() == btnRegister){
+            jlabLoginPress.setText("Register Was Triggered");
+        }
+        if(ae.getSource() == btnExit){
+            jlabLoginPress.setText("Exit Was Triggered");
+            loginScreenFrame.dispose();
+        }
+
+    }
 }
 

@@ -23,4 +23,8 @@ public class Account {
     public int getIndex(){
         return index;
     }
+
+    public static void findUser(String username, String password){
+
+    }
 }
