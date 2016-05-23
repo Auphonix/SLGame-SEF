@@ -31,13 +31,13 @@ public class SLGame
 
     public char displayMenu()
     {
-        Board.terminalOutput("******* Snakes Menu ********");
-        Board.terminalOutput("Play Game        : 1");
-        Board.terminalOutput("Customize Board  : 2");
-        Board.terminalOutput("Exit             : 3");
-        Board.terminalOutput("Enter 1/2/3      : ");
-        Board.terminalOutput("****************************");
-        Board.terminalOutput("Enter Text");
+        System.out.println("******* Snakes Menu ********");
+        System.out.println("Play Game        : 1");
+        System.out.println("Customize Board  : 2");
+        System.out.println("Exit             : 3");
+        System.out.println("Enter 1/2/3      : ");
+        System.out.println("****************************");
+        System.out.println("Enter Text");
         return scan.nextLine().charAt(0);
     }
 
@@ -101,7 +101,8 @@ public class SLGame
             players[i] = new Player(bd,dice,i,1,name);
             bd.repaint();
             while(true) {
-                try {
+                //Used to determine number of player pieces on the board
+                try{
                     System.out.print("Player " + (i + 1) + ", Enter number of player pieces : ");
                     numberOfPlayerPieces[i] = scan.nextInt();
                     break;
@@ -111,7 +112,10 @@ public class SLGame
                     scan.nextLine();
                     continue;
                 }
+
             }
+            //used to determine the average number of snakes on the board
+            System.out.println("The average is: " + averagePlayersNum(numberOfPlayerPieces));
             while(true) {
                 try {
                     System.out.print("Player " + (i + 1) + ", Enter number of snakes on board : ");
@@ -125,6 +129,7 @@ public class SLGame
             }
             scan.nextLine();
         }
+        System.out.println("The average is: " + averagePlayersNum(numberOfPlayerPieces));
         bd.add(players,pCount);
 
         int again;
@@ -140,6 +145,16 @@ public class SLGame
             else
                 changeTurn();
         }
+    }
+
+    //Used to get the average player number chosen by all players
+    public int averagePlayersNum(int[] numbers) {
+        int total = 0;
+        for(int x = 0; x < numbers.length; x++){
+            total += numbers[x];
+        }
+        total = total % numbers.length;
+        return total;
     }
 }
 

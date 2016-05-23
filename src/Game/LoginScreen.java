@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-abstract class LoginScreen extends JFrame implements ActionListener {
+class LoginScreen extends JFrame implements ActionListener {
     JButton btnLogin, btnRegister, btnExit;
     JTextField jtfUser;
     JPasswordField jpfPass;

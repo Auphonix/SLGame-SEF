@@ -143,10 +143,6 @@ public class Board extends JPanel implements Runnable, ActionListener
         }
     }
 
-    public static void terminalInput(String terminalInput) {
-
-    }
-
     public static void terminalOutput(String outputString){
         final int maxLineLength = 26;
         int numLinesToRemove = inGameTerminalOutput.getLineCount() - maxLineLength;
