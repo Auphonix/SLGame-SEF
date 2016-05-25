@@ -22,8 +22,8 @@ public class PlayerTest extends Game.SLGame{
 
     @Before
     public void setUp() throws Exception {
-        playerTest[0] = new Player(brd,dice,1,1,"playerTest1");
-        playerTest[1] = new Player(brd,dice,0,1,"playerTest2");
+        playerTest[0] = new Player(brd,dice,1,"playerTest1",1);
+        playerTest[1] = new Player(brd,dice,1,"playerTest2",1);
         tempDiceRoll = 0;
     }
 
@@ -35,33 +35,33 @@ public class PlayerTest extends Game.SLGame{
     public void playerMovesNumberOfDiceSquares() throws  Exception{ // Used to see if player moves equivalent to number on dice
         tempDiceRoll = 5; //Simulates a dice roll of 5
         System.out.println(tempDiceRoll);
-        playerTest[0].computePos(tempDiceRoll); //Compute dice roll
+        playerTest[0].computePos(tempDiceRoll,0); //Compute dice roll
 
-        assertEquals(tempDiceRoll + 1, playerTest[0].getPos()); //ensures that player has moved to position that is on the dice
+        assertEquals(tempDiceRoll + 1, playerTest[0].getPos(0)); //ensures that player has moved to position that is on the dice
     }
 
     @Test
     public void playersCanLandOnSameSquareTest() throws Exception { //First User test to ensure that players can land on same square
         tempDiceRoll = 5; //Simulates virtual roll and stores in tempVariable
         System.out.println(tempDiceRoll);
-        playerTest[0].computePos(tempDiceRoll); //Comment testing attempt
-        playerTest[1].computePos(tempDiceRoll);
+        playerTest[0].computePos(tempDiceRoll,0); //Comment testing attempt
+        playerTest[1].computePos(tempDiceRoll,0);
 
-        System.out.println(playerTest[0].getPos());
-        System.out.println(playerTest[1].getPos());
+        System.out.println(playerTest[0].getPos(0));
+        System.out.println(playerTest[1].getPos(0));
 
-        assertEquals(tempDiceRoll + 1, playerTest[0].getPos()); //ensures that player is still on dice roll square even though
-        assertEquals(tempDiceRoll + 1, playerTest[1].getPos()); //two players are on that square
+        assertEquals(tempDiceRoll + 1, playerTest[0].getPos(0)); //ensures that player is still on dice roll square even though
+        assertEquals(tempDiceRoll + 1, playerTest[1].getPos(0)); //two players are on that square
     }
 
     @Test
     public void playersDontMoveUnlessTheyRollTheDice() throws Exception{ //used to ensure only one player moves on dice roll
         tempDiceRoll = 5;
         System.out.println(tempDiceRoll);
-        playerTest[0].computePos(tempDiceRoll);
+        playerTest[0].computePos(tempDiceRoll,0);
 
-        assertEquals(tempDiceRoll + 1,playerTest[0].getPos());//Ensures player 1 moves
-        assertEquals(1,playerTest[1].getPos()); // and player 2 is on the same square
+        assertEquals(tempDiceRoll + 1,playerTest[0].getPos(0));//Ensures player 1 moves
+        assertEquals(1,playerTest[1].getPos(0)); // and player 2 is on the same square
     }
 
     @Test

@@ -97,7 +97,7 @@ public class Board extends JPanel implements Runnable, ActionListener
         }
     }
 
-    // Computes the new position taking into account the positiions of the snakes and ladders
+    // Computes the new position taking into account the posiiions of the snakes and ladders
     public int newPos(int pos)
     {
         int val = pos;
