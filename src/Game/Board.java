@@ -42,6 +42,7 @@ public class Board extends JPanel implements Runnable, ActionListener
     // the standard positions of snakes and ladders
     public void setup()
     {
+        /*
         add(new Ladder(12,49));
         add(new Ladder(34,51));
         add(new Ladder(53,79));
@@ -49,7 +50,7 @@ public class Board extends JPanel implements Runnable, ActionListener
         add(new Snake(75,42));
         add(new Snake(39,8));
         add(new Snake(95,21));
-        add(new Snake(42,19));
+        add(new Snake(42,19));*/
     }
 
     // allows the number and positions of snakes and ladders to be customized

@@ -1,13 +1,19 @@
 package Tests;
 
+import Game.Dice;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.awt.*;
 
 /**
  * Created by Danyon on 18/04/2016.
  */
 public class DiceTest {
+    //Create instance of dice object
+    public Graphics g;
+    public Dice d = new Dice(g);
     @Before
     public void setUp() throws Exception {
 
@@ -24,8 +30,8 @@ public class DiceTest {
     }
 
     @Test
-    public void roll() throws Exception {
-
+    public void testDiceRoll() throws  Exception{
+        d.roll();
     }
 
     @Test

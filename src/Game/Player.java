@@ -99,11 +99,10 @@ public class Player extends Draw
             computePos(val, pPiece - 1);	// computes the new position based on the dice value
             bd.repaint();		// causes the board and pieces to be redrawn
             System.out.println(name + "." + pPiece + " is now at position " + pos[pPiece - 1]);
-            if (pos[pPiece] == 100)
+            if (pos[pPiece-1] == 100)
                 return index;	// returns the index of the player winning the game
             if (val == 6)
                 System.out.println("You get to throw again");
-            scan.nextLine();
         } while (val == 6);
         return -1;
     }

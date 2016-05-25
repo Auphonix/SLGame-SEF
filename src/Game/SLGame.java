@@ -2,6 +2,7 @@
 /* You are free to refactor and modify the program 							*/
 package Game;
 
+import javax.print.DocFlavor;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.ByteArrayInputStream;
@@ -26,9 +27,7 @@ public class SLGame {
 
     Scanner scan = new Scanner(System.in);
 
-    public static void main(String args[]) {
-        SLGame sg = new SLGame();
-    }
+    public static void main(String args[]) {SLGame sg = new SLGame(); }
 
     public char displayMenu() {
         System.out.println("******* Snakes Menu ********");
@@ -73,14 +72,19 @@ public class SLGame {
         */
         char ch = ' ';
         do {
-            ch = displayMenu();
-            switch (ch) {
-                case '1':
-                    play();
-                    break;
-                case '2':
-                    bd.customize();
-                    break;
+            try {
+                ch = displayMenu();
+                switch (ch) {
+                    case '1':
+                        play();
+                        break;
+                    case '2':
+                        bd.customize();
+                        break;
+                }
+            }catch (StringIndexOutOfBoundsException e){
+                System.out.println("> Error. Please enter text");
+                continue;
             }
             System.out.println("> Please enter a valid option");
         } while (ch != '3');
@@ -157,7 +161,8 @@ public class SLGame {
         snakeCount = avgIntArray(numberOfSnakes);
         System.out.println(pPiecesCount + " is the number of pieces");
         System.out.println(snakeCount + " is the number of snakes");
-
+        //Setup the board
+        setupSAndL(snakeCount);
         //Sets the number of pieces and positions based on average user input
         for (int i = 0; i < pCount; i++) {
             players[i].setPieces(pPiecesCount);
@@ -169,6 +174,7 @@ public class SLGame {
         int again;
 
         while (true) {
+            pieceOverlapDisplay(pPiecesCount); //inform the user if there are pieces on the same square
             int pos = players[turn].move();   // players get to move in turn
             if (pos != -1) {
                 System.out.println("**** GAME OVER " + players[turn].getName() + " is the winner with piece ");
@@ -199,6 +205,93 @@ public class SLGame {
             }
         }
         return counter;
+    }
+
+    public void setupSAndL(int snakeCount){
+        //Create the snakes
+        for(int i = 0; i < snakeCount; i++){
+            //get head as random number below 100 (not 100 to prevent impossible win)
+            int rnd = (int)(Math.random() * 75);
+            rnd += 25;
+
+            //get the max of the tail. Max tail must be minimum of 10 squares from head.
+            int rnd2Max;
+            int rnd2;
+            //if head is on 10 then there will be a math error therefore change tail to 0
+            if(rnd < 11){
+                rnd2 = 1;
+            }else {
+                rnd2Max = rnd - 10;
+                rnd2 = (int)(Math.random() * rnd2Max);
+            }
+            //create snake on the board
+            bd.add(new Snake(rnd, rnd2));
+        }
+        //create the ladders must be snakes minus 2
+        for(int i = 0; i < snakeCount - 2; i++){
+            //get top as random number below 100 (not 100 to prevent impossible win)
+            int rnd = (int)(Math.random() * 75);
+            rnd += 25;
+
+            //get the max of the bottom position. bottom must be minimum of 10 squares from top.
+            int rnd2Max;
+            int rnd2;
+            //if top is on 10 then there will be a math error therefore change bottom to 0
+            if(rnd < 11){
+                rnd2 = 1;
+            }else {
+                rnd2Max = rnd - 20;
+                rnd2 = (int)(Math.random() * rnd2Max);
+            }
+            //create Ladder on the board
+            bd.add(new Ladder(rnd2, rnd));
+        }
+    }
+
+
+    //Note this function can definitely be shortened!!!
+    //FIXME This function can break for unknown reason... probably due to it's over complicated nature.
+    public void pieceOverlapDisplay(int numPieces) {
+        boolean piece1check = false;
+        boolean piece2check = false;
+        boolean piece3check = false;
+        if (numPieces > 1) {
+            Board.terminalOutput("Please Note!");
+            for (int i = 0; pCount > i; i++) {
+                if (numPieces == 2){
+                    if(players[i].getPos(0) == players[i].getPos(1)) {
+                        Board.terminalOutput(players[i].getName() + "! Piece 1 and 2 are on the same tile");
+                    }
+                }
+                else if(numPieces == 3){
+                    if(players[i].getPos(0) == players[i].getPos(1)){
+                        piece1check = true;
+                    }
+                    if(players[i].getPos(0) == players[i].getPos(2)){
+                        piece2check = true;
+                    }
+                    if(players[i].getPos(1) == players[i].getPos(2)){
+                        piece3check = true;
+                    }
+                    if(piece1check == true && piece2check == true && piece3check == true){
+                        Board.terminalOutput(players[i].getName() + "! All pieces are on the same tile");
+                    }
+                    else if(piece1check == true){
+                        Board.terminalOutput(players[i].getName() + "! Piece 1 and 2 are on the same tile");
+                    }
+                    else if(piece2check == true){
+                        Board.terminalOutput(players[i].getName() + "! Piece 1 and 3 are on the same tile");
+                    }
+                    else if(piece3check == true){
+                        Board.terminalOutput(players[i].getName() + "! Piece 2 and 3 are on the same tile");
+                    }
+                }
+            }
+            Board.terminalOutput("");
+        }
+        else{
+            Board.terminalOutput("No Overlapping! Please continue.");
+        }
     }
 
 }
