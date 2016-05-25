@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6386ebd3-c054-48a7-91dd-99e49b994801" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/Game/Player.class" afterPath="$PROJECT_DIR$/bin/Game/Player.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/Tests/PlayerTest.class" afterPath="$PROJECT_DIR$/bin/Tests/PlayerTest.class" />
+    <list default="true" id="6386ebd3-c054-48a7-91dd-99e49b994801" name="Default" comment="THIS UPDATE INCLUDES:&#10;&#10;-Fixed a bug causing a player to create an error when not entering any text when asked for piece choice&#10;-moved the dice graphic so that it is more central in the white space&#10;">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/Game/Dice.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/Game/Player.class" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Game/Dice.java" afterPath="$PROJECT_DIR$/src/Game/Dice.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Game/Player.java" afterPath="$PROJECT_DIR$/src/Game/Player.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Game/SLGame.java" afterPath="$PROJECT_DIR$/src/Game/SLGame.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Tests/DiceTest.java" afterPath="$PROJECT_DIR$/src/Tests/DiceTest.java" />
     </list>
     <manually-removed-from-ignored>
       <directory path="$PROJECT_DIR$/bin/" />
@@ -18,6 +21,11 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/SLGame$DiceTest_draw.coverage" NAME="DiceTest.draw Coverage Results" MODIFIED="1464186607758" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>Tests.*</FILTER>
+    </SUITE>
+  </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
@@ -30,8 +38,8 @@
       <file leaf-file-name="Board.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Game/Board.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-140">
-              <caret line="114" column="65" selection-start-line="114" selection-start-column="59" selection-end-line="114" selection-end-column="65" />
+            <state relative-caret-position="415">
+              <caret line="221" column="49" selection-start-line="221" selection-start-column="49" selection-end-line="221" selection-end-column="49" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -49,11 +57,33 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="Dice.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Game/Dice.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="648">
+              <caret line="89" column="1" selection-start-line="89" selection-start-column="1" selection-end-line="89" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DiceTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Tests/DiceTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="363">
+              <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="SLGame.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Game/SLGame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="143" column="18" selection-start-line="143" selection-start-column="18" selection-end-line="147" selection-end-column="17" />
+            <state relative-caret-position="-225">
+              <caret line="148" column="17" selection-start-line="148" selection-start-column="17" selection-end-line="148" selection-end-column="17" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -71,11 +101,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Player.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Player.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Game/Player.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="91" column="17" selection-start-line="91" selection-start-column="17" selection-end-line="91" selection-end-column="17" />
+            <state relative-caret-position="105">
+              <caret line="72" column="26" selection-start-line="72" selection-start-column="26" selection-end-line="72" selection-end-column="26" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -151,17 +181,18 @@
         <option value="$PROJECT_DIR$/src/Game/Ladder.java" />
         <option value="$PROJECT_DIR$/src/Game/Snake.java" />
         <option value="$PROJECT_DIR$/src/Game/Test.java" />
-        <option value="$PROJECT_DIR$/src/Game/Dice.java" />
         <option value="$PROJECT_DIR$/src/Game/inputStreamTerminal.java" />
         <option value="$PROJECT_DIR$/src/Game/streamTest.java" />
         <option value="$PROJECT_DIR$/src/Authentication/LoginScreen.java" />
         <option value="$PROJECT_DIR$/src/Authentication/Account.java" />
         <option value="$PROJECT_DIR$/src/Game/Account.java" />
         <option value="$PROJECT_DIR$/src/Game/LoginScreen.java" />
-        <option value="$PROJECT_DIR$/src/Game/Board.java" />
         <option value="$PROJECT_DIR$/src/Tests/PlayerTest.java" />
-        <option value="$PROJECT_DIR$/src/Game/SLGame.java" />
+        <option value="$PROJECT_DIR$/src/Game/Board.java" />
         <option value="$PROJECT_DIR$/src/Game/Player.java" />
+        <option value="$PROJECT_DIR$/src/Game/SLGame.java" />
+        <option value="$PROJECT_DIR$/src/Tests/DiceTest.java" />
+        <option value="$PROJECT_DIR$/src/Game/Dice.java" />
       </list>
     </option>
   </component>
@@ -173,8 +204,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
+    <option name="x" value="246" />
     <option name="y" value="23" />
-    <option name="width" value="1440" />
+    <option name="width" value="1194" />
     <option name="height" value="873" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -367,53 +399,82 @@
       <envs />
       <method />
     </configuration>
-    <configuration default="false" name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="Game.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="MAIN_CLASS_NAME" value="Game.Test" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="SLGame" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="false" name="streamTest" type="Applet" factoryName="Applet" temporary="true">
-      <option name="HTML_USED" value="false" />
-      <option name="MAIN_CLASS_NAME" value="Game.streamTest" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <module name="SLGame" />
-      <method />
-    </configuration>
-    <configuration default="false" name="PlayerTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="DiceTest.testDiceRoll" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="Tests.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="MAIN_CLASS_NAME" value="Tests.PlayerTest" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <module name="SLGame" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="PACKAGE_NAME" value="Tests" />
+      <option name="MAIN_CLASS_NAME" value="Tests.DiceTest" />
+      <option name="METHOD_NAME" value="testDiceRoll" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="SLGame" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
       <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="DiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="Tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="SLGame" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="Tests" />
+      <option name="MAIN_CLASS_NAME" value="Tests.DiceTest" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="DiceTest.draw" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="Tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="SLGame" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="Tests" />
+      <option name="MAIN_CLASS_NAME" value="Tests.DiceTest" />
+      <option name="METHOD_NAME" value="draw" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
       <method />
     </configuration>
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
@@ -653,17 +714,17 @@
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Application.SLGame" />
       <item index="1" class="java.lang.String" itemvalue="Application.LoginScreen" />
-      <item index="2" class="java.lang.String" itemvalue="Application.Test" />
-      <item index="3" class="java.lang.String" itemvalue="Applet.streamTest" />
-      <item index="4" class="java.lang.String" itemvalue="Application.PlayerTest" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.DiceTest.testDiceRoll" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.DiceTest" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.DiceTest.draw" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Application.SLGame" />
-        <item index="1" class="java.lang.String" itemvalue="Application.LoginScreen" />
-        <item index="2" class="java.lang.String" itemvalue="Application.PlayerTest" />
-        <item index="3" class="java.lang.String" itemvalue="Applet.streamTest" />
-        <item index="4" class="java.lang.String" itemvalue="Application.Test" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.DiceTest.testDiceRoll" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.DiceTest.draw" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.DiceTest" />
+        <item index="4" class="java.lang.String" itemvalue="Application.LoginScreen" />
       </list>
     </recent_temporary>
   </component>
@@ -828,33 +889,40 @@
       <option name="project" value="LOCAL" />
       <updated>1464183674499</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="THIS UPDATE INCLUDES:&#10;&#10;-todo is fixed up -&gt; when user selects a peice to move (error checking now occurs for array boundaries and that input is number)">
+      <created>1464184911231</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1464184911231</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="PlayerTest_playerRollsAgainOnSix - 2016.04.21 at 14h 19m 02s.xml">
-      <configuration name="PlayerTest.playerRollsAgainOnSix" configurationId="JUnit" />
+    <history-entry file="DiceTest - 2016.05.26 at 00h 30m 00s.xml">
+      <configuration name="DiceTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PlayerTest_playerRollsAgainOnSix - 2016.04.21 at 14h 19m 53s.xml">
-      <configuration name="PlayerTest.playerRollsAgainOnSix" configurationId="JUnit" />
+    <history-entry file="DiceTest_draw - 2016.05.26 at 00h 30m 09s.xml">
+      <configuration name="DiceTest.draw" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PlayerTest_playerRollsAgainOnSix - 2016.04.21 at 14h 20m 07s.xml">
-      <configuration name="PlayerTest.playerRollsAgainOnSix" configurationId="JUnit" />
+    <history-entry file="DiceTest_testDiceRoll - 2016.05.26 at 00h 24m 33s.xml">
+      <configuration name="DiceTest.testDiceRoll" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PlayerTest_playerRollsAgainOnSix - 2016.04.21 at 14h 20m 08s.xml">
-      <configuration name="PlayerTest.playerRollsAgainOnSix" configurationId="JUnit" />
+    <history-entry file="DiceTest_testDiceRoll - 2016.05.26 at 00h 24m 48s.xml">
+      <configuration name="DiceTest.testDiceRoll" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PlayerTest_playersCanLandOnSameSquareTest - 2016.04.21 at 14h 14m 17s.xml">
-      <configuration name="PlayerTest.playersCanLandOnSameSquareTest" configurationId="JUnit" />
+    <history-entry file="DiceTest_testDiceRoll - 2016.05.26 at 00h 26m 57s.xml">
+      <configuration name="DiceTest.testDiceRoll" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PlayerTest_playersCanLandOnSameSquareTest - 2016.04.21 at 14h 14m 48s.xml">
-      <configuration name="PlayerTest.playersCanLandOnSameSquareTest" configurationId="JUnit" />
+    <history-entry file="DiceTest_testDiceRoll - 2016.05.26 at 00h 29m 27s.xml">
+      <configuration name="DiceTest.testDiceRoll" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PlayerTest_playersCanLandOnSameSquareTest - 2016.04.21 at 14h 15m 36s.xml">
-      <configuration name="PlayerTest.playersCanLandOnSameSquareTest" configurationId="JUnit" />
+    <history-entry file="DiceTest_testDiceRoll - 2016.05.26 at 00h 30m 24s.xml">
+      <configuration name="DiceTest.testDiceRoll" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PlayerTest_playersCanLandOnSameSquareTest - 2016.04.21 at 14h 16m 28s.xml">
-      <configuration name="PlayerTest.playersCanLandOnSameSquareTest" configurationId="JUnit" />
+    <history-entry file="DiceTest_testDiceRoll - 2016.05.26 at 00h 31m 59s.xml">
+      <configuration name="DiceTest.testDiceRoll" configurationId="JUnit" />
     </history-entry>
     <history-entry file="PlayerTest_playersCanLandOnSameSquareTest - 2016.04.21 at 14h 18m 36s.xml">
       <configuration name="PlayerTest.playersCanLandOnSameSquareTest" configurationId="JUnit" />
@@ -873,8 +941,8 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="873" extended-state="6" />
-    <editor active="true" />
+    <frame x="246" y="23" width="1194" height="873" extended-state="0" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.10243278" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -883,18 +951,19 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3277849" sideWeight="0.54031116" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.07682458" sideWeight="0.4596888" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19974391" sideWeight="0.42632332" order="6" side_tool="false" content_ui="tabs" x="21" y="380" width="1398" height="140" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34699103" sideWeight="0.4596888" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19974391" sideWeight="0.42632332" order="6" side_tool="false" content_ui="tabs" x="21" y="380" width="1398" height="140" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16177523" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.49713877" order="3" side_tool="false" content_ui="tabs" x="680" y="430" width="80" height="40" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.027896997" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.049479168" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.46638054" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24964234" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39976552" sideWeight="0.49444443" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39948782" sideWeight="0.49444443" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -935,7 +1004,9 @@
     <MESSAGE value="loginscreen additions and fixes + account class setup and minor implementation" />
     <MESSAGE value="Added the average player change to SLGame so the number of player pieces can be determined :)&#10;" />
     <MESSAGE value="MAJOR UPDATE!!&#10;&#10;THIS UPDATE INCLUDES:&#10;&#10;major game additions&#10;----------------------&#10;-completely added multiple player pieces&#10;-user can now decide which piece to move after each roll&#10;-in making this, the player class has been changed to accomodate for this new feature. This means removing paramaters on the player object class creation&#10;-the creation of this has also lead to multiple creation of methods -&gt; will need to look at diagrams and update&#10;-menu's now have error checking&#10;&#10;major changes&#10;------------------&#10;-inputs that require integers wont allow other data types&#10;-inputs that require ints between range fail if the input is out of bounds&#10;-completely removed all usage for the ingame terminal as is becoming more effort then it is worth -&gt; NOTE can look at it afterwards&#10;&#10;please note&#10;--------------&#10;-there are more things that may have changed but are not noted above so please look inside the change log for the code&#10;-will now be working on the creation of snakes based on player judgements&#10;&#10;Thanks guys" />
-    <option name="LAST_COMMIT_MESSAGE" value="MAJOR UPDATE!!&#10;&#10;THIS UPDATE INCLUDES:&#10;&#10;major game additions&#10;----------------------&#10;-completely added multiple player pieces&#10;-user can now decide which piece to move after each roll&#10;-in making this, the player class has been changed to accomodate for this new feature. This means removing paramaters on the player object class creation&#10;-the creation of this has also lead to multiple creation of methods -&gt; will need to look at diagrams and update&#10;-menu's now have error checking&#10;&#10;major changes&#10;------------------&#10;-inputs that require integers wont allow other data types&#10;-inputs that require ints between range fail if the input is out of bounds&#10;-completely removed all usage for the ingame terminal as is becoming more effort then it is worth -&gt; NOTE can look at it afterwards&#10;&#10;please note&#10;--------------&#10;-there are more things that may have changed but are not noted above so please look inside the change log for the code&#10;-will now be working on the creation of snakes based on player judgements&#10;&#10;Thanks guys" />
+    <MESSAGE value="THIS UPDATE INCLUDES:&#10;&#10;-todo is fixed up -&gt; when user selects a peice to move (error checking now occurs for array boundaries and that input is number)" />
+    <MESSAGE value="THIS UPDATE INCLUDES:&#10;&#10;-Fixed a bug causing a player to create an error when not entering any text when asked for piece choice&#10;-moved the dice graphic so that it is more central in the white space&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="THIS UPDATE INCLUDES:&#10;&#10;-Fixed a bug causing a player to create an error when not entering any text when asked for piece choice&#10;-moved the dice graphic so that it is more central in the white space&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1205,13 +1276,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Game/Dice.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="616">
-          <caret line="63" column="21" selection-start-line="63" selection-start-column="21" selection-end-line="63" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_77.jdk/Contents/Home/src.zip!/java/lang/System.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1830">
@@ -1227,13 +1291,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Game/inputStreamTerminal.java" />
-    <entry file="file://$PROJECT_DIR$/src/Tests/DiceTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Game/streamTest.java" />
     <entry file="file://$PROJECT_DIR$/src/Tests/BoardTest.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1287,18 +1344,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Game/Draw.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="5" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Game/Board.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-140">
-          <caret line="114" column="65" selection-start-line="114" selection-start-column="59" selection-end-line="114" selection-end-column="65" />
+        <state relative-caret-position="415">
+          <caret line="221" column="49" selection-start-line="221" selection-start-column="49" selection-end-line="221" selection-end-column="49" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1307,8 +1356,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Game/SLGame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="143" column="18" selection-start-line="143" selection-start-column="18" selection-end-line="147" selection-end-column="17" />
+        <state relative-caret-position="-225">
+          <caret line="148" column="17" selection-start-line="148" selection-start-column="17" selection-end-line="148" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Tests/DiceTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="363">
+          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1317,11 +1376,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Game/Player.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="91" column="17" selection-start-line="91" selection-start-column="17" selection-end-line="91" selection-end-column="17" />
+        <state relative-caret-position="105">
+          <caret line="72" column="26" selection-start-line="72" selection-start-column="26" selection-end-line="72" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Game/Draw.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="5" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Game/Dice.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="648">
+          <caret line="89" column="1" selection-start-line="89" selection-start-column="1" selection-end-line="89" selection-end-column="1" />
+          <folding />
         </state>
       </provider>
     </entry>

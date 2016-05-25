@@ -64,7 +64,7 @@ public class Player extends Draw
     // Causes the dice to be thrown and the new position to be computed
     public int move()
     {
-        System.out.println("***** Turn of  " + name + " ******" );
+        System.out.println("***** Turn of " + name + " ******" );
         String resp; //No clue what this variable is for?
         int val; //value of roll
         int pPiece = 0; //player piece
@@ -87,6 +87,10 @@ public class Player extends Draw
                     //display error if input is not a number
                 }catch (InputMismatchException e) {
                     System.out.println("> Error. Input is not an integer");
+                    scan.nextLine();
+                    continue;
+                }catch (StringIndexOutOfBoundsException e){
+                    System.out.println("> Error. Please enter text");
                     scan.nextLine();
                     continue;
                 }
