@@ -67,7 +67,7 @@ public class Player extends Draw
         System.out.println("***** Turn of  " + name + " ******" );
         String resp; //No clue what this variable is for?
         int val; //value of roll
-        int pPiece; //player piece
+        int pPiece = 0; //player piece
         do {
             System.out.print("Press Enter to throw dice ");
             resp = scan.nextLine(); //not sure why you'd want to capture the button pressed
@@ -75,9 +75,22 @@ public class Player extends Draw
             val = dice.roll();
             System.out.println("You threw a " + val);
             //get the piece the user wants to move
-            //FIXME need to add try catch for out of bounds + non int
-            System.out.println("Which piece do you want to move? ");
-            pPiece = scan.nextInt();
+            while(pPiece < 1 || pPiece > pos.length){
+                try {
+                    System.out.println("Which piece do you want to move? ");
+                    System.out.println("Please select a number between 1 and " + pos.length + ": ");
+                    pPiece = scan.nextInt();
+                    //display error if out of bounds
+                    if(pPiece < 1 || pPiece > pos.length){
+                        System.out.println("Error. Piece not available");
+                    }
+                    //display error if input is not a number
+                }catch (InputMismatchException e) {
+                    System.out.println("> Error. Input is not an integer");
+                    scan.nextLine();
+                    continue;
+                }
+            }
             //As the player sees 1 on the piece and it is 0 in array. -1 below is to align with array values;
             computePos(val, pPiece - 1);	// computes the new position based on the dice value
             bd.repaint();		// causes the board and pieces to be redrawn
