@@ -224,6 +224,8 @@ public class SLGame {
         return counter;
     }
 
+    //Sets up snakes and ladders by assigning random positions.
+    //NOTE requires + 1 on values to ensure that pos 0 is never selected.
     public void setupSAndL(int snakeCount){
         //Create the snakes
         for(int i = 0; i < snakeCount; i++){
@@ -242,7 +244,7 @@ public class SLGame {
                 rnd2 = (int)(Math.random() * rnd2Max);
             }
             //create snake on the board
-            bd.add(new Snake(rnd, rnd2));
+            bd.add(new Snake(rnd, rnd2 + 1));
         }
         //create the ladders must be snakes minus 2
         for(int i = 0; i < snakeCount - 2; i++){
@@ -261,7 +263,7 @@ public class SLGame {
                 rnd2 = (int)(Math.random() * rnd2Max);
             }
             //create Ladder on the board
-            bd.add(new Ladder(rnd2, rnd));
+            bd.add(new Ladder(rnd2, rnd+1));
         }
     }
 
