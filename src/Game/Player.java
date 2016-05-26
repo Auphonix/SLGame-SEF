@@ -7,20 +7,11 @@ public class Player extends Draw
 {
     private String name;
     private int[] pos; // the current position of the player piece
-    private int index;		// represents the player index 0, 1, 2 or 3 if 4 players
+    private int index;	// represents the player index 0, 1, 2 or 3 if 4 players
     private Dice dice;
     private Board bd;
     private int[] pieces;
     static Scanner scan = new Scanner(System.in);
-
-    public String getName()
-    {
-        return name;
-    }
-    public int getPos(int pieceNum)
-    {
-        return pos[pieceNum];
-    }
 
     public Player(Board bd, Dice dice, int index, String name, int pieces)
     {
@@ -32,6 +23,15 @@ public class Player extends Draw
         }
         this.index = index;
         this.dice = dice;
+    }
+
+    public String getName()
+    {
+        return name;
+    }
+    public int getPos(int pieceNum)
+    {
+        return pos[pieceNum];
     }
 
     //set the number of pieces a player can control

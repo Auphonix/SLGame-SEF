@@ -5,10 +5,12 @@ import java.awt.*;
 public class Snake extends Entity {
     private int head;
     private int tail;
+    private int id;
 
-    public Snake(int h, int t) {
-        head = h;
-        tail = t;
+    public Snake(int h, int t, int id) {
+        this.head = h;
+        this.tail = t;
+        this.id = id;
     }
 
     public int change() {
@@ -88,5 +90,7 @@ public class Snake extends Entity {
     public int getTail() {
         return tail;
     }
+
+    public int getId() { return id;}
 }
 

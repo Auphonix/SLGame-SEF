@@ -19,6 +19,7 @@ public class SLGame {
     public int pCount = -1;
     public int pPiecesCount;
     public int snakeCount;
+    public boolean isCustomized;
     private Board bd;
     private Account ac[] = new Account[10]; //Maximum 10 Accounts
     private int turn = 0;
@@ -74,12 +75,14 @@ public class SLGame {
         do {
             try {
                 ch = displayMenu();
+                isCustomized = false;
                 switch (ch) {
                     case '1':
                         play();
                         break;
                     case '2':
                         bd.customize();
+                        isCustomized = true;
                         break;
                 }
             }catch (StringIndexOutOfBoundsException e){
@@ -136,20 +139,25 @@ public class SLGame {
                 }
 
             }
-            //used to determine the average number of snakes on the board
-            while (numberOfSnakes[i] < 4 || numberOfSnakes[i] > 8) {
-                try {
-                    System.out.print(players[i].getName() + " , Enter number of snakes on board : ");
-                    numberOfSnakes[i] = scan.nextInt();
-                    if (numberOfSnakes[i] < 4 || numberOfSnakes[i] > 8) {
-                        System.out.println("> Error. Please enter a number between 4 and 8");
+            if(isCustomized == false) {
+                //used to determine the average number of snakes on the board
+                while (numberOfSnakes[i] < 4 || numberOfSnakes[i] > 8) {
+                    try {
+                        System.out.print(players[i].getName() + " , Enter number of snakes on board : ");
+                        numberOfSnakes[i] = scan.nextInt();
+                        if (numberOfSnakes[i] < 4 || numberOfSnakes[i] > 8) {
+                            System.out.println("> Error. Please enter a number between 4 and 8");
+                        }
+                        //handles non integers
+                    } catch (InputMismatchException e) {
+                        System.out.println("> Error. Input is not an integer");
+                        scan.nextLine();
+                        continue;
                     }
-                    //handles non integers
-                } catch (InputMismatchException e) {
-                    System.out.println("> Error. Input is not an integer");
-                    scan.nextLine();
-                    continue;
                 }
+            }
+            else{
+                System.out.println("Board is already customized");
             }
             //Ensure no buffer overflow
             scan.nextLine();
@@ -158,11 +166,15 @@ public class SLGame {
         //Get the number of players
 
         pPiecesCount = avgIntArray(numberOfPlayerPieces);
-        snakeCount = avgIntArray(numberOfSnakes);
         System.out.println(pPiecesCount + " is the number of pieces");
-        System.out.println(snakeCount + " is the number of snakes");
-        //Setup the board
-        setupSAndL(snakeCount);
+        if(isCustomized == false) {
+            snakeCount = avgIntArray(numberOfSnakes);
+            System.out.println(snakeCount + " is the number of snakes");
+        }
+        //Setup the board if not already customized
+        if(isCustomized == false) {
+            setupSAndL(snakeCount);
+        }
         //Sets the number of pieces and positions based on average user input
         for (int i = 0; i < pCount; i++) {
             players[i].setPieces(pPiecesCount);
