@@ -29,8 +29,12 @@ public class Player extends Draw
 
     public int getSnakeEscapePoints(){ return snakeEscapePoints;}
 
-    public void incementPoints(){
+    public void incrementPoints(){
         this.snakeEscapePoints += 1;
+    }
+
+    public void decrementPoints(){
+        this.snakeEscapePoints -= 1;
     }
 
     public String getName()

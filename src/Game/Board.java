@@ -115,13 +115,16 @@ public class Board extends JPanel implements Runnable, ActionListener
         if ( val < pos)
         {
             System.out.println("You are bitten by a snake. Press 1 to continue");
+            if(players[cPlayer].getSnakeEscapePoints() != 0) {
+                players[cPlayer].decrementPoints();
+            }
             scan.nextInt();
         }
         else if ( val > pos)
         {
             System.out.println("You are going up the ladder. Press 1 to continue");
             if(players[cPlayer].getSnakeEscapePoints() < 4) {
-                players[cPlayer].incementPoints();
+                players[cPlayer].incrementPoints();
             }
             scan.nextInt();
         }
