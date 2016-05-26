@@ -3,7 +3,7 @@ package Game;
 import com.sun.tools.doclets.internal.toolkit.util.DocFinder;
 
 import java.awt.*;
-import Game.SLGame;
+import Game.SLGame.*;
 import javax.print.DocFlavor;
 import javax.swing.*;
 import javax.swing.text.BadLocationException;
@@ -21,6 +21,7 @@ public class Board extends JPanel implements Runnable, ActionListener
     private int XMARGIN = 20;
     private int YMARGIN = 20;
     private Player players[];
+    private SnakePlayer sPlayers[];
     private int pCount;
 
     private Snake[] ss = new Snake[10];
@@ -39,6 +40,9 @@ public class Board extends JPanel implements Runnable, ActionListener
 
     public static InputStream inputStream = null;
 
+    public int getSnakePlayers(){
+        return sPlayers.length;
+    }
 
     // the standard positions of snakes and ladders
     public void setup()
@@ -117,6 +121,10 @@ public class Board extends JPanel implements Runnable, ActionListener
             System.out.println("You are bitten by a snake. Press 1 to continue");
             if(players[cPlayer].getSnakeEscapePoints() != 0) {
                 players[cPlayer].decrementPoints();
+            }
+            else if(players[cPlayer].getSnakeEscapePoints() == 0){
+                sPlayers[getSnakePlayers()] = new SnakePlayer(this, new Dice, getSnakePlayers(), "snake"+getSnakePlayers(), 1);
+                add(sPlayers);
             }
             scan.nextInt();
         }
@@ -251,6 +259,10 @@ public class Board extends JPanel implements Runnable, ActionListener
     {
         this.players = players;
         this.pCount = pCount;
+    }
+
+    public void add(SnakePlayer snakePlayer[]){
+        this.sPlayers = snakePlayer;
     }
 
     // This method is used to wiggle the snake
