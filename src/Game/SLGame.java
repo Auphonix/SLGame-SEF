@@ -15,7 +15,11 @@ import static Game.Board.textEntered;
 
 // The main system level class 
 public class SLGame {
+    //array of players
     public Player players[] = new Player[4];
+    //array of snakes
+    //NOTE as there is a potential for an overcrowded screen, snake players is capped at 4.
+    public Snake snakes[] = new Snake[4];
     public int pCount = -1;
     public int pPiecesCount;
     public int snakeCount;
@@ -23,6 +27,7 @@ public class SLGame {
     private Board bd;
     private Account ac[] = new Account[10]; //Maximum 10 Accounts
     private int turn = 0;
+    public int[] snakeOnBoardCount;
     public int[] numberOfSnakes = new int[4];
     public int[] numberOfPlayerPieces = new int[4];
 
@@ -186,7 +191,7 @@ public class SLGame {
         int again;
 
         while (true) {
-            pieceOverlapDisplay(pPiecesCount); //inform the user if there are pieces on the same square
+            inGameDisplay(pPiecesCount); //inform the user if there are pieces on the same square
             int pos = players[turn].move();   // players get to move in turn
             if (pos != -1) {
                 System.out.println("**** GAME OVER " + players[turn].getName() + " is the winner with piece ");
@@ -262,47 +267,42 @@ public class SLGame {
 
 
     //Note this function can definitely be shortened!!!
-    //FIXME This function can break for unknown reason... probably due to it's over complicated nature.
-    public void pieceOverlapDisplay(int numPieces) {
-        boolean piece1check = false;
-        boolean piece2check = false;
-        boolean piece3check = false;
-        if (numPieces > 1) {
-            Board.terminalOutput("Please Note!");
-            for (int i = 0; pCount > i; i++) {
-                if (numPieces == 2){
-                    if(players[i].getPos(0) == players[i].getPos(1)) {
-                        Board.terminalOutput(players[i].getName() + "! Piece 1 and 2 are on the same tile");
-                    }
+    public void inGameDisplay(int numPieces) {
+
+        //Reset the ingame terminal upon display
+        Board.inGameTerminalOutput.setText("");
+
+        //Display Position Info
+        disPieceOverlap(numPieces);
+    }
+
+    public void disPieceOverlap(int numPieces){
+        //Create new string builder
+        StringBuilder strBld = new StringBuilder();
+        String dispString;
+
+        Board.terminalOutput("PLAYER PIECE POSITION.");
+        Board.terminalOutput("----------------------");
+        Board.terminalOutput("NAME -> (P1, P2, P3)");
+        for(int i = 0; i < pCount; i++){
+            //add name to string
+            strBld.append(players[i].getName() + " -> ");
+            for(int j = 0; j < numPieces; j++){
+                if(j != (numPieces - 1)) {
+                    strBld.append(Integer.toString(players[i].getPos(j)) + ", ");
                 }
-                else if(numPieces == 3){
-                    if(players[i].getPos(0) == players[i].getPos(1)){
-                        piece1check = true;
-                    }
-                    if(players[i].getPos(0) == players[i].getPos(2)){
-                        piece2check = true;
-                    }
-                    if(players[i].getPos(1) == players[i].getPos(2)){
-                        piece3check = true;
-                    }
-                    if(piece1check == true && piece2check == true && piece3check == true){
-                        Board.terminalOutput(players[i].getName() + "! All pieces are on the same tile");
-                    }
-                    else if(piece1check == true){
-                        Board.terminalOutput(players[i].getName() + "! Piece 1 and 2 are on the same tile");
-                    }
-                    else if(piece2check == true){
-                        Board.terminalOutput(players[i].getName() + "! Piece 1 and 3 are on the same tile");
-                    }
-                    else if(piece3check == true){
-                        Board.terminalOutput(players[i].getName() + "! Piece 2 and 3 are on the same tile");
+                else {
+                    //checks if only one or two players on the board
+                    if(j == 1){
+                        strBld.append(" -.");
+                    }else {
+                        strBld.append(Integer.toString(players[i].getPos(j)) + ".");
                     }
                 }
             }
-            Board.terminalOutput("");
-        }
-        else{
-            Board.terminalOutput("No Overlapping! Please continue.");
+            dispString = strBld.toString();
+            Board.terminalOutput(dispString);
+            strBld.setLength(0);
         }
     }
 

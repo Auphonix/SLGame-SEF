@@ -10,6 +10,7 @@ public class Player extends Draw
     private int index;	// represents the player index 0, 1, 2 or 3 if 4 players
     private Dice dice;
     private Board bd;
+    private int snakeEscapePoints;
     private int[] pieces;
     static Scanner scan = new Scanner(System.in);
 
@@ -23,6 +24,13 @@ public class Player extends Draw
         }
         this.index = index;
         this.dice = dice;
+        this.snakeEscapePoints = 0;
+    }
+
+    public int getPoints(){ return snakeEscapePoints;}
+
+    public void incementPoints(){
+        this.snakeEscapePoints += 1;
     }
 
     public String getName()

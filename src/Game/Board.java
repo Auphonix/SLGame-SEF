@@ -3,6 +3,7 @@ package Game;
 import com.sun.tools.doclets.internal.toolkit.util.DocFinder;
 
 import java.awt.*;
+import Game.SLGame;
 import javax.print.DocFlavor;
 import javax.swing.*;
 import javax.swing.text.BadLocationException;
@@ -119,6 +120,7 @@ public class Board extends JPanel implements Runnable, ActionListener
         else if ( val > pos)
         {
             System.out.println("You are going up the ladder. Press 1 to continue");
+            players[0].incementPoints();
             scan.nextInt();
         }
         return val;
@@ -204,8 +206,8 @@ public class Board extends JPanel implements Runnable, ActionListener
         setup();
         new Thread(this).start();
 
-
-        inGameTerminalInput = new JTextField(20);
+        //Used for attempt at in game input -> didnt work, but code may still be relevant
+        /*inGameTerminalInput = new JTextField(20);
         inGameTerminalInput.addActionListener(this);
         inGameTerminalInput.setBounds(427,60,266,20);
         this.add(inGameTerminalInput);
@@ -213,14 +215,14 @@ public class Board extends JPanel implements Runnable, ActionListener
             public void windowOpened( WindowEvent e ){
                 inGameTerminalInput.requestFocus();
             }
-        });
+        });*/
 
         inGameTerminalOutput = new JTextArea(5,20);
         inGameTerminalOutput.setEditable(false);
         inGameTerminalOutput.setFont(new Font("Menlo",Font.PLAIN,12));
 
         terminalOutputScroll = new JScrollPane(inGameTerminalOutput);
-        terminalOutputScroll.setBounds(430,80,260,400);
+        terminalOutputScroll.setBounds(430,60,260,400);
         this.add(terminalOutputScroll);
 
         Login.setBounds(430,10,120,45);

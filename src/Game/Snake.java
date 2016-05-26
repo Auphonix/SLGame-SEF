@@ -7,7 +7,7 @@ public class Snake extends Entity {
     private int tail;
     private int id;
 
-    public Snake(int h, int t, int id) {
+    public Snake(int h, int t) {
         this.head = h;
         this.tail = t;
         this.id = id;
