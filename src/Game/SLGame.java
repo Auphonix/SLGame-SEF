@@ -274,6 +274,11 @@ public class SLGame {
 
         //Display Position Info
         disPieceOverlap(numPieces);
+
+        //Create multiline break between info
+        Board.terminalOutput("\n\n");
+        //Display snakeEscapePoints for each player
+        disSnakeEscapePoints(numPieces);
     }
 
     public void disPieceOverlap(int numPieces){
@@ -294,12 +299,29 @@ public class SLGame {
                 else {
                     //checks if only one or two players on the board
                     if(j == 1){
+                        strBld.append(Integer.toString(players[i].getPos(j)) + ", ");
                         strBld.append(" -.");
                     }else {
                         strBld.append(Integer.toString(players[i].getPos(j)) + ".");
                     }
                 }
             }
+            dispString = strBld.toString();
+            Board.terminalOutput(dispString);
+            strBld.setLength(0);
+        }
+    }
+
+    public void disSnakeEscapePoints(int numPieces){
+        //Create new string builder
+        StringBuilder strBld = new StringBuilder();
+        String dispString;
+
+        Board.terminalOutput("NO. OF SNAKE ESCAPE POINTS");
+        Board.terminalOutput("--------------------------");
+        Board.terminalOutput("NAME -> # Points");
+        for(int i = 0; i < pCount; i++){
+            strBld.append(players[i].getName() + " -> " + players[i].getSnakeEscapePoints());
             dispString = strBld.toString();
             Board.terminalOutput(dispString);
             strBld.setLength(0);

@@ -27,7 +27,7 @@ public class Player extends Draw
         this.snakeEscapePoints = 0;
     }
 
-    public int getPoints(){ return snakeEscapePoints;}
+    public int getSnakeEscapePoints(){ return snakeEscapePoints;}
 
     public void incementPoints(){
         this.snakeEscapePoints += 1;

@@ -120,7 +120,7 @@ public class Board extends JPanel implements Runnable, ActionListener
         else if ( val > pos)
         {
             System.out.println("You are going up the ladder. Press 1 to continue");
-            players[0].incementPoints();
+
             scan.nextInt();
         }
         return val;
