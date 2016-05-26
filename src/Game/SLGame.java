@@ -192,9 +192,10 @@ public class SLGame {
 
         while (true) {
             inGameDisplay(pPiecesCount); //inform the user if there are pieces on the same square
-            int pos = players[turn].move();   // players get to move in turn
+            int pos = players[turn].move(turn);   // players get to move in turn
             if (pos != -1) {
-                System.out.println("**** GAME OVER " + players[turn].getName() + " is the winner with piece ");
+                System.out.println("**** GAME OVER ****\n");
+                System.out.println(players[turn].getName() + " is the winner!!!!!");
                 break;
             } else
                 changeTurn();

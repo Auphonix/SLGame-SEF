@@ -100,7 +100,7 @@ public class Board extends JPanel implements Runnable, ActionListener
     }
 
     // Computes the new position taking into account the posiiions of the snakes and ladders
-    public int newPos(int pos)
+    public int newPos(int pos, int cPlayer)
     {
         int val = pos;
 
@@ -120,7 +120,9 @@ public class Board extends JPanel implements Runnable, ActionListener
         else if ( val > pos)
         {
             System.out.println("You are going up the ladder. Press 1 to continue");
-
+            if(players[cPlayer].getSnakeEscapePoints() < 4) {
+                players[cPlayer].incementPoints();
+            }
             scan.nextInt();
         }
         return val;
