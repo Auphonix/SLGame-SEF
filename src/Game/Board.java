@@ -1,6 +1,7 @@
 package Game;
 
 import java.awt.*;
+import Game.SLGame.*;
 import javax.print.DocFlavor;
 import javax.swing.*;
 import javax.swing.text.BadLocationException;
@@ -18,6 +19,7 @@ public class Board extends JPanel implements Runnable, ActionListener
     private int XMARGIN = 20;
     private int YMARGIN = 20;
     private Player players[];
+    private SnakePlayer sPlayers[];
     private int pCount;
 
     private Snake[] ss = new Snake[10];
@@ -36,6 +38,9 @@ public class Board extends JPanel implements Runnable, ActionListener
 
     public static InputStream inputStream = null;
 
+    public int getSnakePlayers(){
+        return sPlayers.length;
+    }
 
     // the standard positions of snakes and ladders
     public void setup()
@@ -97,7 +102,7 @@ public class Board extends JPanel implements Runnable, ActionListener
     }
 
     // Computes the new position taking into account the posiiions of the snakes and ladders
-    public int newPos(int pos)
+    public int newPos(int pos, int cPlayer)
     {
         int val = pos;
 
@@ -112,11 +117,21 @@ public class Board extends JPanel implements Runnable, ActionListener
         if ( val < pos)
         {
             System.out.println("You are bitten by a snake. Press 1 to continue");
+            if(players[cPlayer].getSnakeEscapePoints() != 0) {
+                players[cPlayer].decrementPoints();
+            }
+            else if(players[cPlayer].getSnakeEscapePoints() == 0){
+                sPlayers[getSnakePlayers()] = new SnakePlayer(this, new Dice, getSnakePlayers(), "snake"+getSnakePlayers(), 1);
+                add(sPlayers);
+            }
             scan.nextInt();
         }
         else if ( val > pos)
         {
             System.out.println("You are going up the ladder. Press 1 to continue");
+            if(players[cPlayer].getSnakeEscapePoints() < 4) {
+                players[cPlayer].incrementPoints();
+            }
             scan.nextInt();
         }
         return val;
@@ -202,8 +217,8 @@ public class Board extends JPanel implements Runnable, ActionListener
         setup();
         new Thread(this).start();
 
-
-        inGameTerminalInput = new JTextField(20);
+        //Used for attempt at in game input -> didnt work, but code may still be relevant
+        /*inGameTerminalInput = new JTextField(20);
         inGameTerminalInput.addActionListener(this);
         inGameTerminalInput.setBounds(427,60,266,20);
         this.add(inGameTerminalInput);
@@ -211,14 +226,14 @@ public class Board extends JPanel implements Runnable, ActionListener
             public void windowOpened( WindowEvent e ){
                 inGameTerminalInput.requestFocus();
             }
-        });
+        });*/
 
         inGameTerminalOutput = new JTextArea(5,20);
         inGameTerminalOutput.setEditable(false);
         inGameTerminalOutput.setFont(new Font("Menlo",Font.PLAIN,12));
 
         terminalOutputScroll = new JScrollPane(inGameTerminalOutput);
-        terminalOutputScroll.setBounds(430,80,260,400);
+        terminalOutputScroll.setBounds(430,60,260,400);
         this.add(terminalOutputScroll);
 
         Login.setBounds(430,10,120,45);
@@ -242,6 +257,10 @@ public class Board extends JPanel implements Runnable, ActionListener
     {
         this.players = players;
         this.pCount = pCount;
+    }
+
+    public void add(SnakePlayer snakePlayer[]){
+        this.sPlayers = snakePlayer;
     }
 
     // This method is used to wiggle the snake

@@ -15,13 +15,19 @@ import static Game.Board.textEntered;
 
 // The main system level class 
 public class SLGame {
+    //array of players
     public Player players[] = new Player[4];
+    //array of snakes
+    //NOTE as there is a potential for an overcrowded screen, snake players is capped at 4.
+    public Snake snakes[] = new Snake[4];
     public int pCount = -1;
     public int pPiecesCount;
     public int snakeCount;
+    public boolean isCustomized;
     private Board bd;
     private Account ac[] = new Account[10]; //Maximum 10 Accounts
     private int turn = 0;
+    public int[] snakeOnBoardCount;
     public int[] numberOfSnakes = new int[4];
     public int[] numberOfPlayerPieces = new int[4];
 
@@ -74,12 +80,14 @@ public class SLGame {
         do {
             try {
                 ch = displayMenu();
+                isCustomized = false;
                 switch (ch) {
                     case '1':
                         play();
                         break;
                     case '2':
                         bd.customize();
+                        isCustomized = true;
                         break;
                 }
             }catch (StringIndexOutOfBoundsException e){
@@ -136,20 +144,25 @@ public class SLGame {
                 }
 
             }
-            //used to determine the average number of snakes on the board
-            while (numberOfSnakes[i] < 4 || numberOfSnakes[i] > 8) {
-                try {
-                    System.out.print(players[i].getName() + " , Enter number of snakes on board : ");
-                    numberOfSnakes[i] = scan.nextInt();
-                    if (numberOfSnakes[i] < 4 || numberOfSnakes[i] > 8) {
-                        System.out.println("> Error. Please enter a number between 4 and 8");
+            if(isCustomized == false) {
+                //used to determine the average number of snakes on the board
+                while (numberOfSnakes[i] < 4 || numberOfSnakes[i] > 8) {
+                    try {
+                        System.out.print(players[i].getName() + " , Enter number of snakes on board : ");
+                        numberOfSnakes[i] = scan.nextInt();
+                        if (numberOfSnakes[i] < 4 || numberOfSnakes[i] > 8) {
+                            System.out.println("> Error. Please enter a number between 4 and 8");
+                        }
+                        //handles non integers
+                    } catch (InputMismatchException e) {
+                        System.out.println("> Error. Input is not an integer");
+                        scan.nextLine();
+                        continue;
                     }
-                    //handles non integers
-                } catch (InputMismatchException e) {
-                    System.out.println("> Error. Input is not an integer");
-                    scan.nextLine();
-                    continue;
                 }
+            }
+            else{
+                System.out.println("Board is already customized");
             }
             //Ensure no buffer overflow
             scan.nextLine();
@@ -158,11 +171,15 @@ public class SLGame {
         //Get the number of players
 
         pPiecesCount = avgIntArray(numberOfPlayerPieces);
-        snakeCount = avgIntArray(numberOfSnakes);
         System.out.println(pPiecesCount + " is the number of pieces");
-        System.out.println(snakeCount + " is the number of snakes");
-        //Setup the board
-        setupSAndL(snakeCount);
+        if(isCustomized == false) {
+            snakeCount = avgIntArray(numberOfSnakes);
+            System.out.println(snakeCount + " is the number of snakes");
+        }
+        //Setup the board if not already customized
+        if(isCustomized == false) {
+            setupSAndL(snakeCount);
+        }
         //Sets the number of pieces and positions based on average user input
         for (int i = 0; i < pCount; i++) {
             players[i].setPieces(pPiecesCount);
@@ -174,10 +191,11 @@ public class SLGame {
         int again;
 
         while (true) {
-            pieceOverlapDisplay(pPiecesCount); //inform the user if there are pieces on the same square
-            int pos = players[turn].move();   // players get to move in turn
+            inGameDisplay(pPiecesCount); //inform the user if there are pieces on the same square
+            int pos = players[turn].move(turn);   // players get to move in turn
             if (pos != -1) {
-                System.out.println("**** GAME OVER " + players[turn].getName() + " is the winner with piece ");
+                System.out.println("**** GAME OVER ****\n");
+                System.out.println(players[turn].getName() + " is the winner!!!!!");
                 break;
             } else
                 changeTurn();
@@ -207,6 +225,8 @@ public class SLGame {
         return counter;
     }
 
+    //Sets up snakes and ladders by assigning random positions.
+    //NOTE requires + 1 on values to ensure that pos 0 is never selected.
     public void setupSAndL(int snakeCount){
         //Create the snakes
         for(int i = 0; i < snakeCount; i++){
@@ -225,7 +245,7 @@ public class SLGame {
                 rnd2 = (int)(Math.random() * rnd2Max);
             }
             //create snake on the board
-            bd.add(new Snake(rnd, rnd2));
+            bd.add(new Snake(rnd, rnd2 + 1));
         }
         //create the ladders must be snakes minus 2
         for(int i = 0; i < snakeCount - 2; i++){
@@ -244,53 +264,70 @@ public class SLGame {
                 rnd2 = (int)(Math.random() * rnd2Max);
             }
             //create Ladder on the board
-            bd.add(new Ladder(rnd2, rnd));
+            bd.add(new Ladder(rnd2, rnd+1));
         }
     }
 
 
     //Note this function can definitely be shortened!!!
-    //FIXME This function can break for unknown reason... probably due to it's over complicated nature.
-    public void pieceOverlapDisplay(int numPieces) {
-        boolean piece1check = false;
-        boolean piece2check = false;
-        boolean piece3check = false;
-        if (numPieces > 1) {
-            Board.terminalOutput("Please Note!");
-            for (int i = 0; pCount > i; i++) {
-                if (numPieces == 2){
-                    if(players[i].getPos(0) == players[i].getPos(1)) {
-                        Board.terminalOutput(players[i].getName() + "! Piece 1 and 2 are on the same tile");
-                    }
+    public void inGameDisplay(int numPieces) {
+
+        //Reset the ingame terminal upon display
+        Board.inGameTerminalOutput.setText("");
+
+        //Display Position Info
+        disPieceOverlap(numPieces);
+
+        //Create multiline break between info
+        Board.terminalOutput("\n\n");
+        //Display snakeEscapePoints for each player
+        disSnakeEscapePoints(numPieces);
+    }
+
+    public void disPieceOverlap(int numPieces){
+        //Create new string builder
+        StringBuilder strBld = new StringBuilder();
+        String dispString;
+
+        Board.terminalOutput("PLAYER PIECE POSITION.");
+        Board.terminalOutput("----------------------");
+        Board.terminalOutput("NAME -> (P1, P2, P3)");
+        for(int i = 0; i < pCount; i++){
+            //add name to string
+            strBld.append(players[i].getName() + " -> ");
+            for(int j = 0; j < numPieces; j++){
+                if(j != (numPieces - 1)) {
+                    strBld.append(Integer.toString(players[i].getPos(j)) + ", ");
                 }
-                else if(numPieces == 3){
-                    if(players[i].getPos(0) == players[i].getPos(1)){
-                        piece1check = true;
-                    }
-                    if(players[i].getPos(0) == players[i].getPos(2)){
-                        piece2check = true;
-                    }
-                    if(players[i].getPos(1) == players[i].getPos(2)){
-                        piece3check = true;
-                    }
-                    if(piece1check == true && piece2check == true && piece3check == true){
-                        Board.terminalOutput(players[i].getName() + "! All pieces are on the same tile");
-                    }
-                    else if(piece1check == true){
-                        Board.terminalOutput(players[i].getName() + "! Piece 1 and 2 are on the same tile");
-                    }
-                    else if(piece2check == true){
-                        Board.terminalOutput(players[i].getName() + "! Piece 1 and 3 are on the same tile");
-                    }
-                    else if(piece3check == true){
-                        Board.terminalOutput(players[i].getName() + "! Piece 2 and 3 are on the same tile");
+                else {
+                    //checks if only one or two players on the board
+                    if(j == 1){
+                        strBld.append(Integer.toString(players[i].getPos(j)) + ", ");
+                        strBld.append(" -.");
+                    }else {
+                        strBld.append(Integer.toString(players[i].getPos(j)) + ".");
                     }
                 }
             }
-            Board.terminalOutput("");
+            dispString = strBld.toString();
+            Board.terminalOutput(dispString);
+            strBld.setLength(0);
         }
-        else{
-            Board.terminalOutput("No Overlapping! Please continue.");
+    }
+
+    public void disSnakeEscapePoints(int numPieces){
+        //Create new string builder
+        StringBuilder strBld = new StringBuilder();
+        String dispString;
+
+        Board.terminalOutput("NO. OF SNAKE ESCAPE POINTS");
+        Board.terminalOutput("--------------------------");
+        Board.terminalOutput("NAME -> # Points");
+        for(int i = 0; i < pCount; i++){
+            strBld.append(players[i].getName() + " -> " + players[i].getSnakeEscapePoints());
+            dispString = strBld.toString();
+            Board.terminalOutput(dispString);
+            strBld.setLength(0);
         }
     }
 

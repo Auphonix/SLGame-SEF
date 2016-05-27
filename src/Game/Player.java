@@ -7,20 +7,12 @@ public class Player extends Draw
 {
     private String name;
     private int[] pos; // the current position of the player piece
-    private int index;		// represents the player index 0, 1, 2 or 3 if 4 players
+    private int index;	// represents the player index 0, 1, 2 or 3 if 4 players
     private Dice dice;
     private Board bd;
+    private int snakeEscapePoints;
     private int[] pieces;
     static Scanner scan = new Scanner(System.in);
-
-    public String getName()
-    {
-        return name;
-    }
-    public int getPos(int pieceNum)
-    {
-        return pos[pieceNum];
-    }
 
     public Player(Board bd, Dice dice, int index, String name, int pieces)
     {
@@ -32,6 +24,26 @@ public class Player extends Draw
         }
         this.index = index;
         this.dice = dice;
+        this.snakeEscapePoints = 0;
+    }
+
+    public int getSnakeEscapePoints(){ return snakeEscapePoints;}
+
+    public void incrementPoints(){
+        this.snakeEscapePoints += 1;
+    }
+
+    public void decrementPoints(){
+        this.snakeEscapePoints -= 1;
+    }
+
+    public String getName()
+    {
+        return name;
+    }
+    public int getPos(int pieceNum)
+    {
+        return pos[pieceNum];
     }
 
     //set the number of pieces a player can control
@@ -52,17 +64,17 @@ public class Player extends Draw
         }
     }
 
-    public void computePos(int val, int piece)
+    public void computePos(int val, int piece, int cPlayer)
     {
         if ( pos[piece] + val <= 100)
         {
             pos[piece] += val;
         }
-        pos[piece] = bd.newPos(pos[piece]);
+        pos[piece] = bd.newPos(pos[piece], cPlayer);
     }
 
     // Causes the dice to be thrown and the new position to be computed
-    public int move()
+    public int move(int cPlayer)
     {
         System.out.println("***** Turn of " + name + " ******" );
         String resp; //No clue what this variable is for?
@@ -80,6 +92,7 @@ public class Player extends Draw
                     System.out.println("Which piece do you want to move? ");
                     System.out.println("Please select a number between 1 and " + pos.length + ": ");
                     pPiece = scan.nextInt();
+                    scan.nextLine();
                     //display error if out of bounds
                     if(pPiece < 1 || pPiece > pos.length){
                         System.out.println("Error. Piece not available");
@@ -96,7 +109,7 @@ public class Player extends Draw
                 }
             }
             //As the player sees 1 on the piece and it is 0 in array. -1 below is to align with array values;
-            computePos(val, pPiece - 1);	// computes the new position based on the dice value
+            computePos(val, pPiece - 1, cPlayer);	// computes the new position based on the dice value
             bd.repaint();		// causes the board and pieces to be redrawn
             System.out.println(name + "." + pPiece + " is now at position " + pos[pPiece - 1]);
             if (pos[pPiece-1] == 100)
