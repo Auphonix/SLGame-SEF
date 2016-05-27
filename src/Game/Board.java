@@ -1,7 +1,5 @@
 package Game;
 
-import com.sun.tools.doclets.internal.toolkit.util.DocFinder;
-
 import java.awt.*;
 import javax.print.DocFlavor;
 import javax.swing.*;

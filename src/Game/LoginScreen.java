@@ -1,8 +1,12 @@
 package Game;
 
 import javax.swing.*;
+
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 class LoginScreen extends JFrame implements ActionListener {
     JButton btnLogin, btnRegister, btnExit;
@@ -60,6 +64,7 @@ class LoginScreen extends JFrame implements ActionListener {
         loginScreenFrame.setSize(500, 300);
         loginScreenFrame.setVisible(true);
 
+
     }
 
     public void actionPerformed(ActionEvent ae) {
@@ -69,7 +74,18 @@ class LoginScreen extends JFrame implements ActionListener {
             Account.findUser(username, password);
         }
         if(ae.getSource() == btnRegister){
-            jlabLoginPress.setText("Register Was Triggered");
+        	username = jtfUser.getText();
+            password = jpfPass.getText();
+            
+				try {
+					Account.addUser( username, password);
+				} catch (IOException e) {
+					
+					e.printStackTrace();
+				}
+			
+            
+            jlabLoginPress.setText("Register Successful");
         }
         if(ae.getSource() == btnExit){
             jlabLoginPress.setText("Exit Was Triggered");
