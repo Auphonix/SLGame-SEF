@@ -2,16 +2,9 @@
 /* You are free to refactor and modify the program 							*/
 package Game;
 
-import javax.print.DocFlavor;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.io.ByteArrayInputStream;
-import java.nio.charset.StandardCharsets;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import static Game.Board.inGameTerminalInput;
-import static Game.Board.textEntered;
 
 // The main system level class 
 public class SLGame {

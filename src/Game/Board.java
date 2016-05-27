@@ -121,7 +121,7 @@ public class Board extends JPanel implements Runnable, ActionListener
                 players[cPlayer].decrementPoints();
             }
             else if(players[cPlayer].getSnakeEscapePoints() == 0){
-                sPlayers[getSnakePlayers()] = new SnakePlayer(this, new Dice, getSnakePlayers(), "snake"+getSnakePlayers(), 1);
+                sPlayers[getSnakePlayers()] = new SnakePlayer(this, new Dice(this.getGraphics()), getSnakePlayers(), "snake"+getSnakePlayers(), 1);
                 add(sPlayers);
             }
             scan.nextInt();
