@@ -1,17 +1,31 @@
 package Game;
 
 import java.awt.*;
+import Game.Board;
 
 public class Snake extends Entity {
     private int head;
     private int tail;
     private int id;
+    private static int snakeCount = 0;
+
+    public Snake(){
+        this.head = (int) (Math.random() * 100);
+        this.tail = (int) (Math.random() * (head - 10));
+        this.id = snakeCount;
+        incrementSnakeCount();
+    }
 
     public Snake(int h, int t) {
         this.head = h;
         this.tail = t;
-        this.id = id;
+        this.id = snakeCount;
+        incrementSnakeCount();
     }
+
+    public int getSnakeCount(){return this.snakeCount;}
+
+    public void incrementSnakeCount(){this.snakeCount++;}
 
     public int change() {
         return tail - head;

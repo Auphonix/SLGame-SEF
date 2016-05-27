@@ -3,15 +3,21 @@ package Game;
 import java.util.*;
 import java.awt.*;
 import javax.swing.*;
+import Game.SLGame;
 /**
  * Created by Danyon on 26/05/2016.
  */
-public class SnakePlayer extends Player{
+public class SnakePlayer extends Snake{
 
-    public int snakeID;
+    private int head;
+    private int tail;
+    private int parentID;
+    public int snakePlayerID;
 
-    public SnakePlayer(Board bd, Dice dice, int index, String name, int pieces){
-        super(bd, dice, index, name, pieces);
-        this.snakeID = 0;
+    public SnakePlayer(int id){
+        this.head = super.getHead();
+        this.tail = super.getTail();
+        this.parentID = super.getId();
+        this.snakePlayerID = id;
     }
 }
